@@ -3,6 +3,8 @@ package com.example.testinglist;
 import android.app.Application;
 import android.content.res.AssetManager;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.testinglist.model.Datum;
 import com.example.testinglist.model.EmployeeResponse;
 import com.example.testinglist.repository.EmployeeRepository;
@@ -54,7 +56,11 @@ public class MainViewModelTest {
     APIService apiService;
     @Mock
     List<Datum> datumList;
-
+    @Mock
+    EmployeeRepository employeeRepository;
+    @Mock
+    private MutableLiveData<List<Datum>> mutableLiveDatum = new MutableLiveData<>();
+    private ArrayList arrayList = new ArrayList<String>();
     private  MockWebServer mockWebServer;
     Response<EmployeeResponse> response;
     EmployeeResponse employeeResponse;
@@ -102,12 +108,14 @@ public class MainViewModelTest {
         Iterator<Datum> datumIterator = Mockito.mock(Iterator.class);
         for (int i=0;i<datumList.size();i++) {
             Mockito.when(datumIterator.hasNext()).thenReturn(true,false);
-            Mockito.when(datumIterator.next().getEmployeeName()).thenReturn(datumList.get(i).getEmployeeName());
+            Mockito.when(datumIterator.next()).thenReturn(datumList.get(i));
 
-            Mockito.when(datumList.get(i).getEmployeeName()).thenReturn(datumIterator.next().getEmployeeName()) ;
+            assertEquals(getDummy_EmployeeList().get(i),datumList.get(i).getEmployeeName());
+
+            // Mockito.when(datumList.iterator()).thenReturn(datumIterator) ;
         }
     }
-
+    
     @Test
     public void getEmployeeData() {
         datumList.add(datum);
@@ -121,6 +129,33 @@ public class MainViewModelTest {
         assertEquals("Tiger Nixon",datum.getEmployeeName());
     }
 
+    public ArrayList getDummy_EmployeeList(){
+        arrayList.add("Tiger Nixon");
+        arrayList.add("Garrett Winters");
+        arrayList.add("Ashton Cox");
+        arrayList.add("Cedric Kelly");
+        arrayList.add("Airi Satou");
+        arrayList.add("Brielle Williamson");
+        arrayList.add("Herrod Chandler");
+        arrayList.add("Rhona Davidson");
+        arrayList.add("Colleen Hurst");
+        arrayList.add("Sonya Frost");
+        arrayList.add("Jena Gaines");
+        arrayList.add("Quinn Flynn");
+        arrayList.add("Charde Marshall");
+        arrayList.add("Haley Kennedy");
+        arrayList.add("Tatyana Fitzpatrick");
+        arrayList.add("Michael Silva");
+        arrayList.add("Paul Byrd");
+        arrayList.add("Gloria Little");
+        arrayList.add("Bradley Greer");
+        arrayList.add("Dai Rios");
+        arrayList.add("Jenette Caldwell");
+        arrayList.add("Yuri Berry");
+        arrayList.add("Caesar Vance");
+        arrayList.add("Doris Wilder");
+        return arrayList;
+    }
     @After
     public void tearDown() throws Exception {
         mockWebServer.shutdown();
