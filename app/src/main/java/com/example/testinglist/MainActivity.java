@@ -3,7 +3,6 @@ package com.example.testinglist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.os.Bundle;
 import com.example.testinglist.adapter.EmployeeAdapter;
 import com.example.testinglist.databinding.ActivityMainBinding;
 import com.example.testinglist.model.Datum;
-import com.example.testinglist.model.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

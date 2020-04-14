@@ -7,7 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.testinglist.model.Datum;
-import com.example.testinglist.model.Employee;
 import com.example.testinglist.repository.EmployeeRepository;
 
 import java.util.List;

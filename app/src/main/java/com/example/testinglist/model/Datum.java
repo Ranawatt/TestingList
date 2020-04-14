@@ -10,6 +10,8 @@ import com.example.testinglist.R;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class Datum {
     @SerializedName("id")
     @Expose
@@ -76,5 +78,22 @@ public class Datum {
                 .load(imageURL)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(imageView);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Datum)) return false;
+        Datum datum = (Datum) o;
+        return getId().equals(datum.getId()) &&
+                getEmployeeName().equals(datum.getEmployeeName()) &&
+                Objects.equals(getEmployeeSalary(), datum.getEmployeeSalary()) &&
+                Objects.equals(getEmployeeAge(), datum.getEmployeeAge()) &&
+                Objects.equals(getProfileImage(), datum.getProfileImage());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getEmployeeName(), getEmployeeSalary(), getEmployeeAge(), getProfileImage());
     }
 }

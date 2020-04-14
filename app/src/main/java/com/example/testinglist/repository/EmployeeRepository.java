@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.testinglist.APIService;
 import com.example.testinglist.RestClient;
 import com.example.testinglist.model.Datum;
-import com.example.testinglist.model.Employee;
 import com.example.testinglist.model.EmployeeResponse;
 
 import java.util.ArrayList;

@@ -10,19 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.testinglist.R;
 import com.example.testinglist.databinding.EmployeeDetailBinding;
 import com.example.testinglist.model.Datum;
-import com.example.testinglist.model.Employee;
 
 import java.util.ArrayList;
 
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmployeeHolder> {
 
-    private ArrayList<Employee> employees;
     private ArrayList<Datum> datumArrayList;
-
-
-//    public EmployeeAdapter(ArrayList<Datum> employees) {
-//        this.employees = employees;
-//    }
 
     @NonNull
     @Override
@@ -37,21 +30,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
 
         Datum datum = datumArrayList.get(position);
         holder.employeeDetailBinding.setDatum(datum);
-//        Employee employee = employees.get(position);
-//        holder.employeeDetailBinding.setEmployee(employee);
     }
 
     @Override
     public int getItemCount() {
-
         return (datumArrayList != null)? datumArrayList.size():0;
-//        return (employees != null)? employees.size():0;
     }
 
-//    public void setEmployeeDetail(ArrayList<Employee> employees) {
-//        this.employees = employees;
-//        notifyDataSetChanged();
-//    }
 
     public void setEmployeeDetail(ArrayList<Datum> employees) {
         this.datumArrayList = employees;
