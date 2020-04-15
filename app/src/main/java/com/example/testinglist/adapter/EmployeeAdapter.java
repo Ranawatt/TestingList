@@ -37,7 +37,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         return (datumArrayList != null)? datumArrayList.size():0;
     }
 
-
     public void setEmployeeDetail(ArrayList<Datum> employees) {
         this.datumArrayList = employees;
         notifyDataSetChanged();
