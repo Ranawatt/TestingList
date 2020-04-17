@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Datum> data) {
                 employeeAdapter.setEmployeeDetail((ArrayList<Datum>) data);
-
             }
         });
         recyclerView.setHasFixedSize(true);
