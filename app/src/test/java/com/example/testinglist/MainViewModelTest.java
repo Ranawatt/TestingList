@@ -50,8 +50,6 @@ public class MainViewModelTest {
     @Mock
     private Application application;
     @Mock
-    private  Activity activity;
-    @Mock
     private Datum datum;
     @Mock
     APIService apiService;
@@ -66,6 +64,7 @@ public class MainViewModelTest {
     private  MockWebServer mockWebServer;
     @Mock
     Response<EmployeeResponse> response;
+    @Mock
     EmployeeResponse employeeResponse;
 
     @Before
@@ -80,7 +79,7 @@ public class MainViewModelTest {
     public void testNull(){
 
         assertNotNull(mainViewModel.getEmployeeData());
-        assertFalse(mainViewModel.getEmployeeData().hasActiveObservers());
+
     }
 
     @Test
@@ -100,7 +99,7 @@ public class MainViewModelTest {
                 JsonElement element = jsonArray.get(i).getAsJsonObject().get("employee_name");
                 dummyArrayList.add(element.getAsString());
             }
-        // Fetching Actual response from the server
+       // Fetching Actual response from the server
        HttpUrl baseUrl = mockWebServer.url("https://dummy.restapiexample.com/api/");
        Retrofit retrofit= new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
        apiService = retrofit.create(APIService.class);
@@ -114,9 +113,9 @@ public class MainViewModelTest {
         assertEquals("Tiger Nixon",datumList.get(0).getEmployeeName());
         assertEquals("320800",datumList.get(0).getEmployeeSalary());
 
-        Iterator<Datum> datumIterator = Mockito.mock(Iterator.class);
+//        Iterator<Datum> datumIterator = Mockito.mock(Iterator.class);
         for (int i=0;i<datumList.size();i++) {
-            Mockito.when(datumIterator.hasNext()).thenReturn(true,false);
+//            Mockito.when(datumIterator.hasNext()).thenReturn(true,false);
             assertEquals(getDummy_EmployeeList().get(i),datumList.get(i).getEmployeeName());
         }
         // Comparing the value with dummy response
